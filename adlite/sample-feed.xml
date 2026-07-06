@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AD.nl - Nieuws</title>
+    <link>https://www.ad.nl/</link>
+    <description>Het laatste nieuws</description>
+    <item>
+      <title>Kabinet presenteert nieuwe plannen voor woningmarkt</title>
+      <link>https://www.ad.nl/binnenland/kabinet-presenteert-nieuwe-plannen-voor-woningmarkt~a12345678/</link>
+      <guid isPermaLink="true">https://www.ad.nl/binnenland/kabinet-presenteert-nieuwe-plannen-voor-woningmarkt~a12345678/</guid>
+      <description><![CDATA[
+        <img src="https://images.ad.nl/foto.jpg" alt="foto"/>
+        <p>Het kabinet komt met een <strong>pakket maatregelen</strong> om de woningmarkt vlot te trekken.</p>
+        <p>Volgens de minister moeten er de komende jaren honderdduizenden woningen bij komen.
+        Lees ook <a href="https://www.ad.nl/economie/ander-artikel~b999/" onclick="track()">dit artikel</a>.</p>
+        <script>window.dataLayer.push({event:'view'});</script>
+        <img src="https://tracker.ad.nl/pixel.gif?id=abc" width="1" height="1"/>
+      ]]></description>
+    </item>
+    <item>
+      <title>Ajax wint met ruime cijfers</title>
+      <link>https://www.ad.nl/sport/ajax-wint-met-ruime-cijfers~a87654321/</link>
+      <guid isPermaLink="true">https://www.ad.nl/sport/ajax-wint-met-ruime-cijfers~a87654321/</guid>
+      <content:encoded><![CDATA[
+        <figure><img src="https://images.ad.nl/ajax.jpg"><figcaption>De ploeg viert feest.</figcaption></figure>
+        <p>Ajax heeft zondagavond eenvoudig gewonnen.</p>
+        <ul><li>Drie goals in de eerste helft</li><li>Clean sheet</li></ul>
+        <iframe src="https://youtube.com/embed/xyz"></iframe>
+      ]]></content:encoded>
+      <description>Korte samenvatting die genegeerd wordt want content:encoded bestaat.</description>
+    </item>
+    <item>
+      <title>Weerbericht: zon en af en toe een bui</title>
+      <link>https://www.ad.nl/binnenland/weerbericht-zon-en-af-en-toe-een-bui~a555/</link>
+      <guid>https://www.ad.nl/binnenland/weerbericht~a555/</guid>
+      <description>Vandaag afwisselend zonnig met kans op een bui in het oosten.</description>
+    </item>
+  </channel>
+</rss>

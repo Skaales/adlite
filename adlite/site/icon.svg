@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#0a5ad4"/>
+  <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"
+        font-family="Helvetica, Arial, sans-serif" font-weight="700"
+        font-size="200" fill="#ffffff">AD</text>
+  <text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle"
+        font-family="Helvetica, Arial, sans-serif" font-weight="400"
+        font-size="64" fill="#ffffff" opacity="0.85">lite</text>
+</svg>

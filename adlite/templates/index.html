@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ theme_color }}">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <title>{{ name }}</title>
+    <link rel="stylesheet" href="/index.css">
+  </head>
+  <body>
+    <main>
+      <strong>Algemeen nieuws</strong>
+      <ul>
+      {{ items }}
+      </ul>
+    </main>
+    <footer>Laatste update: {{ updated }}. Bron: <a href="{{ source_url }}">{{ source_name }}</a></footer>
+    <script src="/register-sw.js"></script>
+  </body>
+</html>
