@@ -53,23 +53,40 @@ function internal_link(string $id): string
 
 function safe_get_contents(string $url, string $userAgent): string
 {
-    $context = stream_context_create([
-        'http' => [
-            'header'        => "User-Agent: {$userAgent}\r\nAccept: application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8\r\n",
-            'timeout'       => 15,
-            'follow_location' => 1,
-        ],
-        'https' => [
-            'header'        => "User-Agent: {$userAgent}\r\nAccept: application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8\r\n",
-            'timeout'       => 15,
-            'follow_location' => 1,
-        ],
-    ]);
+    $headers = "User-Agent: {$userAgent}\r\n"
+             . "Accept: application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8\r\n";
+    $opts = ['header' => $headers, 'timeout' => 15, 'follow_location' => 1, 'ignore_errors' => true];
+    $context = stream_context_create(['http' => $opts, 'https' => $opts]);
 
     $contents = @file_get_contents($url, false, $context);
     if ($contents === false) {
-        throw new Unavailable('Could not fetch ' . $url);
+        throw new Unavailable('Could not reach ' . $url . ' (DNS/connection/timeout)');
     }
+
+    // $http_response_header is populated by the wrapper; first line holds the status.
+    $status = 0;
+    if (isset($http_response_header[0]) && preg_match('#\s(\d{3})\s#', $http_response_header[0], $m)) {
+        $status = (int) $m[1];
+    }
+    if ($status >= 400 || $status === 0 && $contents === '') {
+        throw new Unavailable(sprintf('Feed returned HTTP %d for %s', $status, $url));
+    }
+
+    // If the body clearly isn't a feed, show the start of it so the cause is obvious
+    // (a Cloudflare / "are you human?" page, an HTML error, etc.).
+    $head = ltrim($contents);
+    $looksLikeFeed = (stripos($head, '<?xml') === 0)
+        || (stripos($head, '<rss') !== false)
+        || (stripos($head, '<feed') !== false);
+    if (!$looksLikeFeed) {
+        $snippet = preg_replace('/\s+/', ' ', substr(strip_tags($head), 0, 200));
+        throw new Unavailable(sprintf(
+            "HTTP %d but the response is not a feed. First 200 chars: %s",
+            $status ?: 200,
+            trim($snippet)
+        ));
+    }
+
     return $contents;
 }
 
